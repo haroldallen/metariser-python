@@ -12,6 +12,7 @@ import sys
 import hachoir.metadata
 
 # App Config
+icons_path = os.path.dirname(os.path.realpath("icons"))+"/icons"
 output_folder = '/.metariser/'
 app_name = "ALLEN Metariser"
 app_url = "www.hallen.uk/project/metariser"
@@ -126,32 +127,32 @@ for file in f:
                 
                 if "Camera focal" in line:
                     metaline = "f/"+line[16:]
-                    icon = Image.open("C:/Users/every/Dev/PhotoPrettier/icons/aperture.png")
+                    icon = Image.open(f"{icons_path}/aperture.png")
                     y = border
                 elif "Camera exposure" in line:
                     metaline = line[19:]
-                    icon = Image.open("C:/Users/every/Dev/PhotoPrettier/icons/clock.png")
+                    icon = Image.open(f"{icons_path}/clock.png")
                     y = border+(main_size+y_unit/3)
                     
                     unit_x = x+font.getlength(metaline)+y_unit/6
                     draw.text((unit_x, y+font.size-font_camera.size*1.1), "sec", fill=text_color, font=font_camera)
                 elif "ISO speed rating" in line:
                     metaline = line[20:]
-                    icon = Image.open("C:/Users/every/Dev/PhotoPrettier/icons/sun.png")
+                    icon = Image.open(f"{icons_path}/sun.png")
                     y = border+(main_size+y_unit/3)*2
                     
                     unit_x = x+font.getlength(metaline)+y_unit/6
                     draw.text((unit_x, y+font.size-font_camera.size*1.1), "ISO", fill=text_color, font=font_camera)
                 elif "Focal length" in line:
                     metaline = line[16:]
-                    icon = Image.open("C:/Users/every/Dev/PhotoPrettier/icons/crosshair.png")
+                    icon = Image.open(f"{icons_path}/crosshair.png")
                     y = border+(main_size+y_unit/3)*3
                     
                     unit_x = x+font.getlength(metaline)+y_unit/6
                     draw.text((unit_x, y+font.size-font_camera.size*1.1), "mm", fill=text_color, font=font_camera)
                 elif "Camera model" in line:
                     metaline = line[16:]
-                    icon = Image.open("C:/Users/every/Dev/PhotoPrettier/icons/camera.png")
+                    icon = Image.open(f"{icons_path}/camera.png")
                     icon_y_offset = y_unit*0.07
                     font = font_camera
                     size = round(font.size)
@@ -163,10 +164,12 @@ for file in f:
                         metaline = line[15:]
                     elif sys.argv.count('--lens') > 0 or sys.argv.count('-l') > 0:
                         metaline = input(f"Enter lens model for {file}: ")
+                        if metaline.replace(" ", "") == "":
+                            continue
                     else:
                         continue
                     
-                    icon = Image.open("C:/Users/every/Dev/PhotoPrettier/icons/search.png")
+                    icon = Image.open(f"{icons_path}/search.png")
                     icon_y_offset = y_unit*0.07
                     font = font_camera
                     size = round(font.size)
