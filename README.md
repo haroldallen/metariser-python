@@ -1,6 +1,6 @@
 > [!NOTE]
 > This legacy python script version of Metariser has been archived and is nolonger supported.  
-> For the new Tauri application of Metariser, see [haroldallen/metariser](https://github.com/haroldallen/metariser).
+> For the new Tauri application of Metariser, see [haroldallen/metariser-app](https://github.com/haroldallen/metariser-app).
 
 # Metariser (python script version)
 Metariser generates images from your photos with borders and metadata, ready for sharing on socials.  
